@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>💐 Sorpresa</title>
+
+<style>
+body {
+    background: linear-gradient(#ffd6e8, #fff);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+h1 {
+    color: #d63384;
+}
+
+p {
+    font-size: 18px;
+}
+
+button{
+    padding:10px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:20px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+}
+
+#flores {
+    display: none;
+    margin-top: 30px;
+}
+
+.flor {
+    font-size: 55px;
+    cursor: pointer;
+    margin: 15px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.flor:hover {
+    transform: scale(1.3);
+}
+
+/* ===== CORAZONES BONITOS ===== */
+
+.petal{
+  position:absolute;
+  top:-10vh;
+  font-size:90px;
+  animation: fall linear forwards;
+  pointer-events:none;
+}
+
+.petal span{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:18px;
+  font-weight:bold;
+  color:white;
+  text-shadow:0 0 6px rgba(0,0,0,.7);
+}
+
+@keyframes fall{
+  to{
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>💐 Sorpresa 💐</h1>
+<p id="texto">Toca el botón 💖</p>
+
+<button onclick="mostrar()">Abrir</button>
+
+<div id="flores">
+    <div class="flor" onclick="alert('TU 🫵 ERES MIA!!!!!!🔥 ')">🌸</div>
+    <div class="flor" onclick="alert('Me encantas ✨')">🌷</div>
+    <div class="flor" onclick="alert('Me gusta besar tu cuerpo 🫣🤤🔥🔥💖')">🌹</div>
+    <div class="flor" onclick="alert('Te quiero 💗')">🌼</div>
+    <div class="flor" onclick="alert('Eres mi persona favorita 💘')">🌺</div>
+</div>
+
+<script>
+
+function mostrar() {
+    document.getElementById("flores").style.display = "block";
+    document.getElementById("texto").innerText =
+        "Ahora toca las flores 🌸";
+
+    // Lanza muchos corazones como el primer código
+    for(let i=0;i<140;i++){
+        setTimeout(spawn, i*25);
+    }
+}
+
+function spawn(){
+  const e=document.createElement("div");
+  e.className="petal";
+
+  const heart=document.createElement("div");
+  heart.innerHTML="&#10084;&#65039;";
+
+  const text=document.createElement("span");
+  text.innerHTML="A&amp;B";
+
+  e.appendChild(heart);
+  e.appendChild(text);
+
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(5+Math.random()*5)+"s";
+
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),10000);
+}
+
+</script>
+
+</body>
+</html>
